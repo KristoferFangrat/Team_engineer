@@ -47,6 +47,7 @@ pyjwt==2.9.0
 pyopenssl==24.2.1
 python-dateutil==2.9.0.post0
 pytz==2024.1
+pywin32==306
 pyyaml==6.0.2
 pyzmq==26.2.0
 requests==2.32.3
@@ -70,4 +71,4 @@ tzdata==2024.1
 urllib3==2.2.2
 wcwidth==0.2.13
 wheel==0.44.0
-
+win-precise-time==1.4.2
