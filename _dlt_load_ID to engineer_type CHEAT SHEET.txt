@@ -1,0 +1,6 @@
+1725615259.6231027 = rymdingenjör
+1725615273.8652909 = Automationstekniker
+1725615288.4209018 = Högskoleingenjör ?
+1725615300.7220933 = Civilingenjör
+1725615320.9660556 = Maskiningenjör
+1725615332.2427404 = Miljöingenjör

@@ -6,6 +6,11 @@ USE SCHEMA STAGING;
 
 SELECT * FROM engineer_field_job_ads LIMIT 5;
 
+SELECT COUNT(*) FROM engineer_field_job_ads;
+
 SELECT DESCRIPTION__TEXT FROM engineer_field_job_ads LIMIT 10;
 
 SELECT OCCUPATION_GROUP__LABEL FROM engineer_field_job_ads LIMIT 10;
+
+SELECT DISTINCT(OCCUPATION__LABEL) FROM engineer_field_job_ads;
+
