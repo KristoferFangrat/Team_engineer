@@ -11,14 +11,32 @@ def _get_ads(url_for_search, params):
     return json.loads(response.content.decode("utf8"))
 
 
-@dlt.resource(write_disposition="replace")
+@dlt.resource(write_disposition="append")
 def jobsearch_resource(params):
 
     url = "https://jobsearch.api.jobtechdev.se"
     url_for_search = f"{url}/search"
 
-    for ad in _get_ads(url_for_search, params)["hits"]:
-        yield ad
+    total_fetched = 0
+    while True:
+        #Update offset for pagination
+        params["offset"] = total_fetched
+
+        ads = _get_ads(url_for_search, params)["hits"]
+
+        #stop if there are no more ads
+        if not ads:
+            break
+
+        for ad in ads:
+            yield ad
+
+        #Break loop if less than 100 ads are returned (last page)
+        if len(ads) < 100:
+            break
+
+        #update the total fetched ads count for the next pagination step
+        total_fetched += 100
 
 
 def run_pipeline(query, table_name):
@@ -28,7 +46,7 @@ def run_pipeline(query, table_name):
         dataset_name="Staging",
     )
 
-    params = {"q": query, "limit": 100}
+    params = {"q": query, "limit": 100, "offset": 0}
 
     load_info = pipeline.run(jobsearch_resource(params=params), table_name=table_name)
     print(load_info)
@@ -37,8 +55,8 @@ def run_pipeline(query, table_name):
 if __name__ == "__main__":
     working_directory = Path(__file__).parent
     os.chdir(working_directory)
-
-    query = "högskoleingenjör"
+    queries = ["rymdingenjör", "driftsingenjör", "automationsingenjör", "högskoleingenjör", "civilingenjör", "maskiningenjör", "miljöingenjör"]
     table_name = "engineer_field_job_ads"
-
-    run_pipeline(query, table_name)
+    
+    for query in queries:
+        run_pipeline(query, table_name)
