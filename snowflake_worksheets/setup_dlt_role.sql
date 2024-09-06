@@ -44,3 +44,5 @@ INSERT INTO staging.test (test)
 VALUES(2);
 
 DROP TABLE staging.test;
+
+USE ROLE kristoffer_user;
