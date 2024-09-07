@@ -1,0 +1,43 @@
+Table fct_job_ads {
+    job_id INTEGER [primary key]
+    number_of_vacancies INTEGER [NOT NULL]
+    relevance INTEGER [NOT NULL]
+    application_deadline DATE [NOT NULL]
+    publication_date DATE [NOT NULL]
+    job_details_id INTEGER [ref: > dim_job_details.job_details_id]
+    employer_id INTEGER [ref: > dim_employer.employer_id]
+    auxillary_id INTEGER [ref: > dim_auxillary_attributes.auxillary_id]
+    }
+
+Table dim_job_details {
+    job_details_id INTEGER [primary key]
+    headline STRING [NOT NULL]
+    description STRING [NOT NULL]
+    description_html_formatted STRING [NOT NULL]
+    employement_type STRING [NOT NULL]
+    duration STRING [NOT NULL]
+    salary_type STRING [NOT NULL]
+    scope_of_work_min DECIMAL(3,0) [NOT NULL]
+    scope_of_work_max DECIMAL(3,0) [NOT NULL]
+    engineer_type STRING [NOT NULL]
+    occupation_label STRING [NOT NULL]
+}
+
+Table dim_employer {
+    employer_id INTEGER [primary key]
+    employer_name STRING [NOT NULL]
+    employer_organization_number STRING [NOT NULL]
+    workplace_street_address STRING [NOT NULL]
+    workplace_region STRING [NOT NULL]
+    workplace_postcode STRING [NOT NULL]
+    workplace_city STRING [NOT NULL]
+    workplace_country STRING [NOT NULL]
+    workplace_municipality STRING [NOT NULL]
+}
+
+Table dim_auxillary_attributes {
+    auxillary_id INTEGER [primary key]
+    experience_required STRING [NOT NULL]
+    driver_license STRING [NOT NULL]
+    access_to_own_car STRING [NOT NULL]
+}
