@@ -40,3 +40,12 @@ SELECT
 FROM
     engineer_field_job_ads
 LIMIT 200;
+
+SELECT
+    HEADLINE,
+    occupation__label,
+    _DLT_LOAD_ID
+FROM
+    engineer_field_job_ads
+    WHERE _DLT_LOAD_ID = '1725637528.460333'
+LIMIT 200;

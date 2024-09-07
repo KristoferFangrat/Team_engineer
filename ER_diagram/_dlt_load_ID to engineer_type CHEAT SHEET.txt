@@ -1,0 +1,7 @@
+1725637462.57518 = Rymdingenjör
+1725637471.831309 = Driftingenjör
+1725637484.744361 = Automationsingenjör
+1725637494.549522 = Högskoleingenjör
+1725637501.94134 = Civilingenjör
+1725637518.8779361 = Maskiningenjör
+1725637528.460333 = Miljöingenjör

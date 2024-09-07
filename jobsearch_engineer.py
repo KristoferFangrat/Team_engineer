@@ -41,7 +41,7 @@ def jobsearch_resource(params):
 
 def run_pipeline(query, table_name):
     pipeline = dlt.pipeline(
-        pipeline_name="engineer_jobsearch",
+        pipeline_name="jobsearch_engineer",
         destination="snowflake",
         dataset_name="Staging",
     )
@@ -55,7 +55,8 @@ def run_pipeline(query, table_name):
 if __name__ == "__main__":
     working_directory = Path(__file__).parent
     os.chdir(working_directory)
-    queries = ["rymdingenjör", "driftsingenjör", "automationsingenjör", "högskoleingenjör", "civilingenjör", "maskiningenjör", "miljöingenjör"]
+
+    queries = ["rymdingenjör", "driftingenjör", "automationsingenjör", "högskoleingenjör", "civilingenjör", "maskiningenjör", "miljöingenjör"]
     table_name = "engineer_field_job_ads"
     
     for query in queries:
