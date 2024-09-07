@@ -17,8 +17,8 @@ Table dim_job_details {
     employement_type STRING [NOT NULL]
     duration STRING [NOT NULL]
     salary_type STRING [NOT NULL]
-    scope_of_work_min DECIMAL(3,0) [NOT NULL]
-    scope_of_work_max DECIMAL(3,0) [NOT NULL]
+    scope_of_work_min NUMBER(3,0) [NOT NULL]
+    scope_of_work_max NUMBER(3,0) [NOT NULL]
     engineer_type STRING [NOT NULL]
     occupation_label STRING [NOT NULL]
 }
