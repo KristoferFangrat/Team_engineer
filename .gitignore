@@ -163,4 +163,8 @@ cython_debug/
 #.idea/
 
 setup_users.sql
+<<<<<<< HEAD
 .env
+=======
+.DS_Store
+>>>>>>> db6027c0bf18afc0fae3fba529f41760a010ecd0
