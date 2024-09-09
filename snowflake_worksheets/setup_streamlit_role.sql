@@ -19,4 +19,4 @@ GRANT ROLE T_E_streamlit_ROLE to user T_E_streamlit;
 
 
 show grants to role t_e_streamlit_role;
-show future grants to role t_e_streamlit_role;
+--show future grants to role t_e_streamlit_role;
