@@ -1,16 +1,16 @@
-Table fct_job_ads {
+Table fct_job_ad {
     job_id INTEGER [primary key]
     number_of_vacancies INTEGER [NOT NULL]
     relevance INTEGER [NOT NULL]
     application_deadline DATE [NOT NULL]
     publication_date DATE [NOT NULL]
-    job_details_id INTEGER [ref: > dim_job_details.job_details_id]
+    job_details_id INTEGER [ref: > dim_job_detail.job_detail_id]
     employer_id INTEGER [ref: > dim_employer.employer_id]
-    auxillary_id INTEGER [ref: > dim_auxillary_attributes.auxillary_id]
+    auxillary_id INTEGER [ref: > dim_auxillary_attribute.auxillary_id]
     }
 
-Table dim_job_details {
-    job_details_id INTEGER [primary key]
+Table dim_job_detail {
+    job_detail_id INTEGER [primary key]
     headline STRING [NOT NULL]
     description STRING [NOT NULL]
     description_html_formatted STRING [NOT NULL]
@@ -35,7 +35,7 @@ Table dim_employer {
     workplace_municipality STRING [NOT NULL]
 }
 
-Table dim_auxillary_attributes {
+Table dim_auxillary_attribute {
     auxillary_id INTEGER [primary key]
     experience_required STRING [NOT NULL]
     driver_license STRING [NOT NULL]
