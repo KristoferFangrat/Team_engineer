@@ -1,16 +1,24 @@
 WITH src_job_detail AS (SELECT * FROM {{ ref('src_job_detail') }})
 
 SELECT
-    id,
-    headline,
-    description__text as description,
-    description__text_formatted as description_html_formatted,
-    employment_type__label as employment_type,
-    duration__label as duration,
-    salary_type__label as salary_type,
-    scope_of_work__min as minimum_working_hours,
-    scope_of_work__max as maximum_working_hours,
-    occupation_group__label as engineer_type,
-    Occuapation_field__label as occupation
+{{dbt_utils.generate_surrogate_key(['id','headline'])}} AS job_detail_id,
+{{ capitalize_first_letter_each_word('headline') }} AS headline,
+description_text,
+employment_type,
+duration,
+salary_type,
+coalesce(cast(scope_of_work_min as string), 'Not Available') AS scope_of_work_min,
+coalesce(cast(scope_of_work_max as string), 'Not Available') AS scope_of_work_max,
+occupation_field,
+CASE 
+    WHEN engineer_type_id = 1725637462.57518 THEN 'Rymdingenjör'
+    WHEN engineer_type_id = 1725637471.831309 THEN 'Driftingenjör'
+    WHEN engineer_type_id = 1725637484.744361 THEN 'Automationsingenjör'
+    WHEN engineer_type_id = 1725637494.549522 THEN 'HHögskoleingenjör'
+    WHEN engineer_type_id = 1725637501.94134 THEN 'Civilingenjör'
+    WHEN engineer_type_id = 1725637518.8779361 THEN 'Maskiningenjör'
+    WHEN engineer_type_id = 1725637528.460333 THEN  'Miljöingenjör'
 
+    ELSE 'Not Available'
+END AS engineer_type
 FROM src_job_detail
