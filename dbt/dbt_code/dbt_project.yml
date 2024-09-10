@@ -31,6 +31,18 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_code:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    +materialized: view  # Default materialization for all models under dbt_code
+
+
+    src:
+      +materialized: ephemeral  # Ephemeral materialization for source models
+      +schema: warehouse  # Schema for source models
+
+    dim:
+      +schema: warehouse  # Schema for dimension models
+
+    fct:
+      +schema: warehouse  # Schema for fact models
+    
+    mart:
+      +schema: marts  # Schema for mart models
