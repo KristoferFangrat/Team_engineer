@@ -1,16 +1,16 @@
 Table fct_job_ad {
-    job_id INTEGER [primary key]
+    job_id STRING [primary key]
     number_of_vacancies INTEGER [NOT NULL]
     relevance INTEGER [NOT NULL]
-    application_deadline DATE [NOT NULL]
-    publication_date DATE [NOT NULL]
-    job_details_id INTEGER [ref: > dim_job_detail.job_detail_id]
-    employer_id INTEGER [ref: > dim_employer.employer_id]
-    auxillary_id INTEGER [ref: > dim_auxillary_attribute.auxillary_id]
+    application_deadline DATETIME [NOT NULL]
+    publication_date DATETIME [NOT NULL]
+    job_details_key STRING [ref: > dim_job_detail.job_detail_id]
+    employer_key STRING [ref: > dim_employer.employer_id]
+    auxillary_key STRING [ref: > dim_auxillary_attribute.auxillary_id]
     }
 
 Table dim_job_detail {
-    job_detail_id INTEGER [primary key]
+    job_detail_id STRING [primary key]
     headline STRING [NOT NULL]
     description STRING [NOT NULL]
     description_html_formatted STRING [NOT NULL]
@@ -24,7 +24,7 @@ Table dim_job_detail {
 }
 
 Table dim_employer {
-    employer_id INTEGER [primary key]
+    employer_id STRING [primary key]
     employer_name STRING [NOT NULL]
     employer_organization_number STRING [NOT NULL]
     workplace_street_address STRING [NOT NULL]
@@ -36,8 +36,8 @@ Table dim_employer {
 }
 
 Table dim_auxillary_attribute {
-    auxillary_id INTEGER [primary key]
-    experience_required STRING [NOT NULL]
-    driver_license STRING [NOT NULL]
-    access_to_own_car STRING [NOT NULL]
+    auxillary_id STRING [primary key]
+    experience_required VARCHAR(30) [NOT NULL]
+    driver_license VARCHAR(30) [NOT NULL]
+    access_to_own_car VARCHAR(30) [NOT NULL]
 }
