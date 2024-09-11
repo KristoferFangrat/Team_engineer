@@ -1,3 +1,9 @@
+{{ 
+    config(
+        materialized='ephemeral',
+    )
+}}
+
 WITH stg_job_ads as (select * from {{ source('engineer_ads', 'stg_data_ads') }})
 
 select

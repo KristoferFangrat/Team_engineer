@@ -1,14 +1,20 @@
-with stg_job_ads as (select * from {{source ('engineer_ads', 'stg_data_ads')}})
+{{ 
+    config(
+        materialized='ephemeral',
+    )
+}}
 
-select
+WITH stg_job_ads AS (select * from {{source ('engineer_ads', 'stg_data_ads')}})
+
+SELECT
 id,
-employer__name as employer_name,
-employer__organization_number as employer_organization_number,
-workplace_address__street_address as workplace_street_address,
-workplace_address__region as workplace_region,
-workplace_address__postcode as workplace_postcode,
-workplace_address__city as workplace_city,
-workplace_address__country as workplace_country,
-workplace_address__municipality as workplace_municipality
+employer__name AS employer_name,
+employer__organization_number AS employer_organization_number,
+workplace_address__street_address AS workplace_street_address,
+workplace_address__region AS workplace_region,
+workplace_address__postcode AS workplace_postcode,
+workplace_address__city AS workplace_city,
+workplace_address__country AS workplace_country,
+workplace_address__municipality AS workplace_municipality
 
-from stg_job_ads
+FROM stg_job_ads

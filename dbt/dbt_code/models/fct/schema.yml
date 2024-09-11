@@ -10,9 +10,57 @@ models:
           - unique
           - not_null
 
-    columns: 
       - name: vacancies
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: number
+          - dbt_expectations.expect_column_quantile_values_to_be_between:
+              quantile: .90
+              min_value: 1 
+              max_value: 30
+
+      - name: relevance
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
+
+      - name: deadline
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp_ntz
+
+      - name: published
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp_ntz
+      
+      - name: job_detail_key
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+                to: ref('dim_job_detail')
+                field: job_detail_id
+   
+      - name: employer_key
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+                to: ref('dim_employer')
+                field: employer_id
+
+      - name: auxillary_attribute_key
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+                to: ref('dim_auxillary_attribute')
+                field: auxillary_attribute_id
