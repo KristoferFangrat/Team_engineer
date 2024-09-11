@@ -18,8 +18,6 @@ FROM
 LEFT JOIN 
     jd ON jd.id = ja.id
 LEFT JOIN
-    e ON e.id = ja.employer_id
+    e ON e.id = ja.id
 LEFT JOIN
-    aa ON aa.id = ja.auxillary_attribute_id
-
-    
+    aa ON aa.id = ja.id
