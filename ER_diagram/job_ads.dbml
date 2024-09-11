@@ -13,7 +13,6 @@ Table dim_job_detail {
     job_detail_id STRING [primary key]
     headline STRING [NOT NULL]
     description STRING [NOT NULL]
-    description_html_formatted STRING [NOT NULL]
     employement_type STRING [NOT NULL]
     duration STRING [NOT NULL]
     salary_type STRING [NOT NULL]
