@@ -31,6 +31,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_code:
+    +materialized: view  # Default materialization for all models under dbt_code
 
 
     src:
