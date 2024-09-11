@@ -1,0 +1,18 @@
+models: 
+  - name: fct_job_ad
+    data_tests:
+      - dbt_expectations.expect_table_columns_to_match_set:
+          column_list: ["job_ad_id", "vacancies", "relevance", "deadline", "published", "job_detail_key", "employer_key", "auxillary_attribute_key"]
+
+    columns: 
+      - name: job_ad_id
+        data_tests:
+          - unique
+          - not_null
+
+    columns: 
+      - name: vacancies
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: number
