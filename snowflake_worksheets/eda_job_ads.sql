@@ -50,6 +50,75 @@ FROM
     WHERE _DLT_LOAD_ID = '1725637528.460333'
 LIMIT 200;
 
+SELECT employer__name, WORKPLACE_ADDRESS__STREET_ADDRESS FROM ENGINEER_FIELD_JOB_ADS WHERE employer__name = UPPER(employer__name) LIMIT 100;
+
+SELECT employer__name FROM ENGINEER_FIELD_JOB_ADS WHERE employer__name IS NULL LIMIT 100;
+SELECT employer__name, employer__organization_number FROM ENGINEER_FIELD_JOB_ADS WHERE employer__organization_number = NULL LIMIT 100;
+
+SELECT employer__name, workplace_address__region FROM ENGINEER_FIELD_JOB_ADS WHERE workplace_address__region IS null LIMIT 100;
+
+SELECT employer__name, workplace_address__region FROM ENGINEER_FIELD_JOB_ADS WHERE workplace_address__region = UPPER(workplace_address__region) LIMIT 100;
+
+
+SELECT employer__name, workplace_address__postcode FROM ENGINEER_FIELD_JOB_ADS WHERE workplace_address__postcode IS null LIMIT 100;
+
+
+SELECT employer__name, workplace_address__postcode FROM ENGINEER_FIELD_JOB_ADS LIMIT 200;
+
+SELECT DISTINCT(workplace_address__country) FROM ENGINEER_FIELD_JOB_ADS;
+
+SELECT DISTINCT(workplace_address__city) FROM ENGINEER_FIELD_JOB_ADS;
+
+SELECT DISTINCT(workplace_address__country) FROM ENGINEER_FIELD_JOB_ADS;
+
+SELECT DISTINCT(workplace_address__municipality) FROM ENGINEER_FIELD_JOB_ADS;
+
+SELECT workplace_address__municipality  FROM ENGINEER_FIELD_JOB_ADS WHERE workplace_address__municipality IS NULL;
+
+SELECT headline
+FROM ENGINEER_FIELD_JOB_ADS
+WHERE headline IS NULL;
+
+SELECT headline
+FROM ENGINEER_FIELD_JOB_ADS
+WHERE HEADLINE = UPPER(HEADLINE);
+
+SELECT description__text
+FROM ENGINEER_FIELD_JOB_ADS
+LIMIT 10;
+
+
+SELECT description__text
+FROM ENGINEER_FIELD_JOB_ADS
+WHERE description__text IS NULL
+LIMIT 10;
+
+SELECT DISTINCT(employment_type__label)
+FROM ENGINEER_FIELD_JOB_ADS;
+
+SELECT DISTINCT(employment_type__label)
+FROM ENGINEER_FIELD_JOB_ADS
+WHERE employment_type__label IS NULL;
+
+SELECT DISTINCT(SALARY_TYPE__LABEL)
+FROM ENGINEER_FIELD_JOB_ADS
+LIMIT 50;
+
+
+SELECT DISTINCT(SCOPE_OF_WORK__MIN)
+FROM ENGINEER_FIELD_JOB_ADS;
+
+SELECT DISTINCT(SCOPE_OF_WORK__MAX)
+FROM ENGINEER_FIELD_JOB_ADS;
+
+SELECT DISTINCT(OCCUPATION_GROUP__LABEL)
+FROM ENGINEER_FIELD_JOB_ADS;
+
+SELECT DISTINCT(OCCUPATION_GROUP__LABEL)
+FROM ENGINEER_FIELD_JOB_ADS
+WHERE occupation_group__label IS NULL;
+
+
 SELECT description__text
 FROM ENGINEER_FIELD_JOB_ADS
 LIMIT 5;

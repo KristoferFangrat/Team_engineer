@@ -1,0 +1,70 @@
+models:
+
+    - name: dim_employer
+      table_tests:
+        - dbt_expectations.expect_table_columns_to_match_set:
+            column_list: ["employer_id", "employer_name", "employer_organization_number", "workplace_street_address", "workplace_region", "workplace_postcode", "workplace_city", "workplace_country", "workplace_municipality"]
+
+      columns:
+        - name: employer_id
+          data_tests:
+            - unique
+            - not_null
+
+        - name: employer_name
+          data_tests:
+            - not_null
+            - dbt_expectations.expect_column_values_to_have_consistent_casing:
+                display_inconsistent_columns: true
+
+        - name: employer_organization_number
+          data_tests:
+            - not_null
+            - dbt_expectations.expect_column_values_to_be_between:
+                min_value: 0000000000
+                max_value: 9999999999
+                row_condition: employer_organization_number != 'Not Available'
+
+        - name: workplace_street_address
+          data_tests:
+            - not_null
+            - dbt_expectations.expect_column_values_to_have_consistent_casing:
+                display_inconsistent_columns: true
+                
+        - name: workplace_region
+          data_tests:
+            - not_null
+            - dbt_expectations.expect_column_values_to_have_consistent_casing:
+                display_inconsistent_columns: true
+                
+        - name: workplace_postcode
+          data_tests:
+            - not_null
+            - dbt_expectations.expect_column_values_to_be_between:
+                min_value: 000000
+                max_value: 999999
+                row_condition: workplace_postcode != 'Not Available'
+
+        - name: workplace_city
+          data_tests:
+            - not_null
+            - dbt_expectations.expect_column_values_to_have_consistent_casing:
+                display_inconsistent_columns: true
+                
+        - name: workplace_country
+          data_tests:
+            - not_null
+            - dbt_expectations.expect_column_values_to_have_consistent_casing:
+                display_inconsistent_columns: true
+
+        - name: workplace_municipality
+          data_tests:
+            - not_null
+            - dbt_expectations.expect_column_values_to_have_consistent_casing:
+                display_inconsistent_columns: true
+
+
+    
+
+
+    
