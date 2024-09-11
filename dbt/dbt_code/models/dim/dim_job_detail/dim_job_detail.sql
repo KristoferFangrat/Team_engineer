@@ -5,7 +5,7 @@ SELECT
 {{ capitalize_first_letter_each_word('headline') }} AS headline,
 description_text,
 employment_type,
-duration,
+coalesce(duration, 'Not Available') AS duration,
 salary_type,
 coalesce(cast(scope_of_work_min as string), 'Not Available') AS scope_of_work_min,
 coalesce(cast(scope_of_work_max as string), 'Not Available') AS scope_of_work_max,
