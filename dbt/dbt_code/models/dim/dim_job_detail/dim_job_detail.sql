@@ -1,3 +1,21 @@
+{{
+    config(
+        description='Denna vy innehåller detaljerad information om jobbannonser.',
+        columns={
+            'job_detail_id': 'Unikt ID för varje jobbdetalj',
+            'headline': 'Rubrik för jobbannonsen',
+            'description_text': 'Beskrivningstext för jobbannonsen',
+            'employment_type': 'Anställningstyp',
+            'duration': 'Anställningens längd',
+            'salary_type': 'Lönetyp',
+            'scope_of_work_min': 'Minsta omfattning av arbetstid',
+            'scope_of_work_max': 'Högsta omfattning av arbetstid',
+            'occupation_field': 'Yrkesområde',
+            'engineer_type': 'Ingenjörstyp'
+        }
+    )
+}}
+
 WITH src_job_detail AS (SELECT * FROM {{ ref('src_job_detail') }})
 
 SELECT

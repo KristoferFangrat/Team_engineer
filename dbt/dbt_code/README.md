@@ -1,4 +1,28 @@
-Welcome to your new dbt project!
+# Welcome to your new dbt project!
+
+Detta bibliotek innehåller alla dbt-modeller, makron och andra resurser som används för att bygga datalager och datamart.
+
+## Katalogstruktur
+
+- 'models/': Innehåller alla dbt-modeller.
+- 'macros/': Innehåller alla dbt-makron.
+- 'analyses/': Innehåller analysfiler.
+- 'logs/': Innehåller loggfiler.
+
+## Komma igång
+
+För att köra dbt-projektet, använd följande kommandon:
+
+``` sh
+dbt run
+dbt test
+dbt docs generate
+dbt docs server
+
+```
+## Kontakta
+
+För frågor eller support, kontakta Yohanna.
 
 ### Using the starter project
 

@@ -1,9 +1,15 @@
-with stg_job_ads as (select * from {{source ('engineer_ads', 'stg_data_ads')}})
+{{ 
+    config(
+        materialized='ephemeral',
+    )
+}}
 
-select
+WITH stg_job_ads AS (SELECT * from {{source ('engineer_ads', 'stg_data_ads')}})
+
+SELECT
 id,
-driving_license_required as required_driving_license,
-experience_required as experience_required,
-access_to_own_car as access_to_own_car
+driving_license_required AS required_driving_license,
+experience_required AS experience_required,
+access_to_own_car AS access_to_own_car
 
-from stg_job_ads
+FROM stg_job_ads
