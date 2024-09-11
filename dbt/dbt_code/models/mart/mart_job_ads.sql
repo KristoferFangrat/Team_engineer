@@ -2,29 +2,17 @@ WITH fct_job_ad AS (
     SELECT * FROM {{ ref('fct_job_ad') }}
 ),
 
-job_details AS (
-    SELECT * FROM {{ ref('dim_job_detail') }}
-),
-
-employer AS (
-    SELECT * FROM {{ ref('dim_employer') }}
-),
-
+employers AS ( SELECT * FROM {{ ref('dim_employer') }}
+)
 SELECT
+    e.employer_id AS employer_id, -- Use employer_id instead of id
     e.employer_name,
-    jd.headline,
+    f.job_ad_id AS job_ad_id,  -- Use job_ad_id instead of id
     f.vacancies,
+    f.deadline,  -- Use the casted deadline
     f.relevance,
-    f.deadline,
     f.published
-
-FROM 
-    fct_job_ad AS f
-LEFT JOIN 
-    job_details AS jd
-ON
-    f.job_detail_key = jd.job_detail_id
-LEFT JOIN
-    employer AS e
-ON
-    f.employer_key = e.employer_id
+    
+FROM fct_job_ad AS f
+LEFT JOIN employers AS e
+    ON f.employer_key = e.employer_id

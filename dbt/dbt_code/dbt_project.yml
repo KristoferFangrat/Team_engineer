@@ -39,13 +39,10 @@ models:
       +schema: warehouse  # Schema for source models
 
     dim:
-      +materialized: view
       +schema: warehouse  # Schema for dimension models
 
     fct:
-      +materialized: incremental
       +schema: warehouse  # Schema for fact models
     
     mart:
-      +materialized: view
       +schema: marts  # Schema for mart models
