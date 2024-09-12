@@ -1,10 +1,3 @@
-{{
-    config(
-        unique_key='job_ad_id',
-        description='Denna tabell innehåller information om jobbannonser.'
-    )
-}}
-
 WITH ja AS (SELECT * FROM {{ ref('src_job_ads')}}),
     jd AS (SELECT * FROM {{ ref('src_job_detail')}}),
     e AS (SELECT * FROM {{ ref('src_employer')}}),
