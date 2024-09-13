@@ -33,13 +33,13 @@ models:
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: timestamp_ntz
+              column_type: timestamp_tz
 
       - name: published
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: timestamp_ntz
+              column_type: timestamp_tz
       
       - name: job_detail_key
         data_tests:

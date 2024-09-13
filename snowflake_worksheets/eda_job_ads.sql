@@ -183,3 +183,14 @@ LIMIT 10;
 
 SELECT distinct(number_of_vacancies)
 FROM engineer_field_job_ads;
+
+
+SELECT DISTINCT workplace_municipality, COUNT(workplace_municipality) AS AMOUNTOFADS
+FROM dim_employer
+GROUP BY workplace_municipality
+ORDER BY AMOUNTOFADS DESC;
+
+SELECT DISTINCT workplace_region, COUNT(workplace_region) AS AMOUNTOFADS
+FROM dim_employer
+GROUP BY workplace_region
+ORDER BY AMOUNTOFADS DESC;
