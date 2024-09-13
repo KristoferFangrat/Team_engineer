@@ -139,3 +139,47 @@ LIMIT 10;
 SELECT DISTINCT(OCCUPATION_FIELD__LABEL)
 FROM ENGINEER_FIELD_JOB_ADS
 LIMIT 20;
+
+
+SELECT employer_id, COUNT(*)
+FROM dim_employer
+GROUP BY employer_id
+HAVING COUNT(*) > 1;
+
+SELECT id, COUNT(*)
+FROM engineer_field_job_ads
+GROUP BY id
+HAVING COUNT(*) > 1;
+
+SELECT headline
+FROM dim_job_detail
+WHERE HEADLINE = UPPER(HEADLINE);
+
+
+SELECT DISTINCT(workplace_region)
+FROM dim_employer;
+
+SELECT DISTINCT(workplace_city)
+FROM dim_employer;
+SELECT DISTINCT(workplace_country)
+FROM dim_employer;
+
+
+SELECT DISTINCT(duration)
+FROM dim_job_detail;
+
+
+SELECT DISTINCT(scope_of_work_min)
+FROM dim_job_detail;
+
+
+SELECT DISTINCT(scope_of_work_max)
+FROM dim_job_detail;
+
+
+SELECT * 
+FROM dim_auxillary_atribute
+LIMIT 10;
+
+SELECT distinct(number_of_vacancies)
+FROM engineer_field_job_ads;

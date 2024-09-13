@@ -9,6 +9,7 @@ def layout():
     st.write("This dashboard shows the job listing for Engineering from arbetetsformedlingens API")
     
 
+
     st.markdown("Filters")
     cols = st.columns(4)
 
@@ -28,13 +29,20 @@ def layout():
         st.write("")
 
     where_clauses = []
+
+    st.markdown("## Type of Engineers")
+    cols = st.columns(1)
+
+    with cols[0]:
+        selected_engineer_type = st.selectbox("Filter by Engineer Type", engineer_types)
+
+
     if selected_engineer_type != "All":
         where_clauses.append(f"ENGINEER_TYPE = '{selected_engineer_type}'")
     where_clauses.append(f"PUBLISHED >= '{start_date}' AND PUBLISHED <= '{end_date}'")
     where_clause = "WHERE " + " AND ".join(where_clauses) if where_clauses else ""
 
     filtered_df = query_job_listing(f"SELECT * FROM mart_job_listings {where_clause}")
-
 
     # Update metrics
     st.markdown("## Filtered Vacancies")
