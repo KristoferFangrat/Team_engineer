@@ -6,6 +6,8 @@ import pandas as pd
 def query_job_listing(query="SELECT * FROM marts.mart_job_listings"):
     load_dotenv()
 
+
+    
     with connect(
         user=os.getenv("SNOWFLAKE_USER"),
         password=os.getenv("SNOWFLAKE_PASSWORD"),
