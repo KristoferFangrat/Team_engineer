@@ -17,7 +17,8 @@ SELECT
     jd.duration,
     jd.scope_of_work_min,
     jd.scope_of_work_max,
-    f.deadline
+    f.deadline,
+    jd.engineer_type
 FROM fct_job_ad AS f
 LEFT JOIN job_details AS jd
     ON f.job_detail_key = jd.job_detail_id
