@@ -13,13 +13,16 @@ SELECT
     f.relevance,
     e.employer_name,
     e.workplace_city,
+    e.workplace_municipality,
+    e.workplace_region,
     jd.description_text,
     jd.duration,
     jd.scope_of_work_min,
     jd.scope_of_work_max,
     f.deadline,
+    f.published,
     jd.engineer_type,
-    f.published
+    jd.occupation_field,
 
 FROM fct_job_ad AS f
 LEFT JOIN job_details AS jd

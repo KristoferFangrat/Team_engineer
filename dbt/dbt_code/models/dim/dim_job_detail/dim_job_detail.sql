@@ -32,7 +32,7 @@ CASE
     WHEN engineer_type_id = 1725637462.57518 THEN 'Rymdingenjör'
     WHEN engineer_type_id = 1725637471.831309 THEN 'Driftingenjör'
     WHEN engineer_type_id = 1725637484.744361 THEN 'Automationsingenjör'
-    WHEN engineer_type_id = 1725637494.549522 THEN 'HHögskoleingenjör'
+    WHEN engineer_type_id = 1725637494.549522 THEN 'Högskoleingenjör'
     WHEN engineer_type_id = 1725637501.94134 THEN 'Civilingenjör'
     WHEN engineer_type_id = 1725637518.8779361 THEN 'Maskiningenjör'
     WHEN engineer_type_id = 1725637528.460333 THEN  'Miljöingenjör'
