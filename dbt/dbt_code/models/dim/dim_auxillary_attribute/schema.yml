@@ -1,19 +1,19 @@
 models:
   - name: dim_auxillary_attribute
-    description: "Information om krav och önskemål för jobb, innehåller information om krav på körkort, erfarenhet, tillgång till egen bil, se nedan för mer information."
+    description: "Auxillary attributes for job ads"
     data_tests:
       - dbt_expectations.expect_table_columns_to_match_set:
           column_list: ["auxillary_attribute_id", "required_driving_license", "experience_required", "access_to_own_car"]
 
     columns: 
       - name: auxillary_attribute_id
-        description: "Primärnyckel, unik identifierare för krav och önskemål för jobb, surrogatnyckel skapad baserat på kolumnerna id, required_driving_license, experience_required och access_to_own_car."
+        description: "Unique identifier for the auxillary attribute"
         data_tests:
-          - unique
-          - not_null
+        - not_null
+        - unique
 
       - name: required_driving_license
-        description: "Krav på körkort."
+        description: "Indicates if a driving license is required for the job"
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_in_set:
@@ -22,7 +22,7 @@ models:
               column_type: boolean
           
       - name: experience_required
-        description: "Krav på erfarenhet."
+        description: "Indicates if experience is required for the job" 
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_in_set:
@@ -32,7 +32,7 @@ models:
     
    
       - name: access_to_own_car
-        description: "Krav på tillgång till egen bil."
+        description: "Indicates if access to own car is required for the job"
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_in_set:

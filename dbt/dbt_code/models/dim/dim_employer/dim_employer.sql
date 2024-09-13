@@ -1,20 +1,3 @@
-{{
-  config(
-      description='Denna vy innehåller detaljerad information om arbetsgivare.',
-      columns={
-        'employer_id': 'Unikt ID för varje arbetsgivare',
-        'employer_name': 'Arbetsgivarens namn',
-        'employer_organization_number': 'Arbetsgivarens organisationsnummer',
-        'workplace_street_address': 'Arbetsplatsens gatuadress',
-        'workplace_region': 'Vilken region arbetsplatsen tillhör',
-        'workplace_postcode': 'Arbetsplatsens postnummer',
-        'workplace_city': 'Vilken stad arbetsplatsen tillhör',
-        'workplace_country': 'Vilket land arbetsplatsen tillhör',
-        'workplace_municipality': 'Vilken kommun arbetsplatsen tillhör'
-    }
-  )
-}}
-
 with src_employer as (select * from {{ ref('src_employer') }})
 
 select {{dbt_utils.generate_surrogate_key(['id','employer_name'])}} as employer_id,

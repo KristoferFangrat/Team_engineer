@@ -6,13 +6,11 @@ models:
 
     columns: 
       - name: job_ad_id
-        description: "Primärnyckel, unik identifierare för jobbannons, surrogatnyckel skapad baserat på kolumnerna id, vacancies, relevance, deadline, published, job_detail_key, employer_key och auxillary_attribute_key."
         data_tests:
           - unique
           - not_null
 
       - name: vacancies
-        description: "Antal lediga platser för jobbannsonsen."
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
@@ -23,7 +21,6 @@ models:
               max_value: 30
 
       - name: relevance
-        description: "Relevans för jobbannons."
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between:
@@ -33,21 +30,18 @@ models:
               column_type: float
 
       - name: deadline
-        description: "Sista ansökningsdag för jobbannons."
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: timestamp_ntz
 
       - name: published
-        description: "Publiceringsdatum för jobbannons."
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: timestamp_ntz
       
       - name: job_detail_key
-        description: "Primärnyckel för jobbdetaljer."
         data_tests:
           - unique
           - not_null
@@ -56,7 +50,6 @@ models:
                 field: job_detail_id
    
       - name: employer_key
-        description: "Primärnyckel för arbetsgivare."
         data_tests:
           - unique
           - not_null
@@ -65,7 +58,6 @@ models:
                 field: employer_id
 
       - name: auxillary_attribute_key
-        description: "Primärnyckel för krav och önskemål för jobb."
         data_tests:
           - unique
           - not_null

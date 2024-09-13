@@ -1,6 +1,8 @@
 sources:
   - name: engineer_ads
+    description: "Engineer job ads from the Swedish Public Employment Service"
     schema: Staging
     tables:
       - name: stg_data_ads
+        description: "Engineer job ads from the Swedish Public Employment Service"
         identifier: engineer_field_job_ads
