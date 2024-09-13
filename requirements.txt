@@ -98,6 +98,8 @@ python-dotenv==1.0.1
 python-slugify==8.0.4
 pytimeparse==1.1.8
 pytz==2024.1
+pywin32==306
+pywin32-ctypes==0.2.3
 pyyaml==6.0.2
 pyzmq==26.2.0
 referencing==0.35.1
@@ -126,6 +128,8 @@ types-setuptools==74.0.0.20240831
 typing-extensions==4.12.2
 tzdata==2024.1
 urllib3==2.2.2
+watchdog==4.0.2
 wcwidth==0.2.13
 wheel==0.44.0
+win-precise-time==1.4.2
 zipp==3.20.1
