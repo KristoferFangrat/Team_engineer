@@ -12,6 +12,7 @@ SELECT
     f.deadline,  -- Use the casted deadline
     f.relevance,
     f.published
+
     
 FROM fct_job_ad AS f
 LEFT JOIN employers AS e
