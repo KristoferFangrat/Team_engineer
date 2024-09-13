@@ -2,11 +2,11 @@
     config(
         description='Denna vy innehåller detaljerad information på krav som behövs för en specifik tjänst.',
         columns={
-            'auxillary_attribute_id': 'Unikt ID för varje krav',
+            'auxillary_attribute_id': 'Unikt ID för varje krav, surrogate key(id, required_driving_license, experience_required, access_to_own_car  ) för krav tabellen, används som foreign key i faktabellen',
             'required_driving_license': 'Krävs körkort',
             'experience_required': 'Krävs erfarenhet',
             'access_to_own_car': 'Tillgång till egen bil'
-        }
+    }
     )
 }}
 

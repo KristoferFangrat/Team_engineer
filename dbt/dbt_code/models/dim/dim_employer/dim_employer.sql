@@ -1,7 +1,7 @@
 {{
   config(
-    description = 'Denna vy innehåller detaljerad information om arbetsgivare.',
-    columns={
+      description='Denna vy innehåller detaljerad information om arbetsgivare.',
+      columns={
         'employer_id': 'Unikt ID för varje arbetsgivare',
         'employer_name': 'Arbetsgivarens namn',
         'employer_organization_number': 'Arbetsgivarens organisationsnummer',
@@ -12,7 +12,7 @@
         'workplace_country': 'Vilket land arbetsplatsen tillhör',
         'workplace_municipality': 'Vilken kommun arbetsplatsen tillhör'
     }
-    )
+  )
 }}
 
 with src_employer as (select * from {{ ref('src_employer') }})

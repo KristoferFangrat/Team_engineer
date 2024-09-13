@@ -1,3 +1,19 @@
+{{
+  config(
+    description='Innehåller information om varje jobbannons, dess relevans, antal lediga platser, sista ansökningsdag och publiceringsdatum.',
+    columns={
+        'job_ad_id': 'Unikt ID för varje jobbannons',
+        'vacancies': 'Antal lediga platser',
+        'relevance': 'Relevans',
+        'deadline': 'Sista ansökningsdag',
+        'published': 'Publiceringsdatum',
+        'job_detail_key': 'Surrogate key för jobbdetaljer',
+        'employer_key': 'Surrogate key för arbetsgivare',
+        'auxillary_attribute_key': 'Surrogate key för krav'
+    }
+    )
+}}
+
 WITH ja AS (SELECT * FROM {{ ref('src_job_ads')}}),
     jd AS (SELECT * FROM {{ ref('src_job_detail')}}),
     e AS (SELECT * FROM {{ ref('src_employer')}}),

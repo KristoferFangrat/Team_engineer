@@ -17,7 +17,7 @@ För att köra dbt-projektet, använd följande kommandon:
 dbt run
 dbt test
 dbt docs generate
-dbt docs server
+dbt docs serve
 
 ```
 ## Kontakta

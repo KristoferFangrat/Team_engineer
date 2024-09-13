@@ -1,6 +1,6 @@
 sources:
-  - name: engineer_ads  # database
-    schema: Staging  # schema
+  - name: engineer_ads
+    schema: Staging
     tables:
-      - name: stg_data_ads  # reference table name
+      - name: stg_data_ads
         identifier: engineer_field_job_ads

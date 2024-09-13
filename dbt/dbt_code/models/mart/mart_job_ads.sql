@@ -5,11 +5,11 @@ WITH fct_job_ad AS (
 employers AS ( SELECT * FROM {{ ref('dim_employer') }}
 )
 SELECT
-    e.employer_id AS employer_id, -- Use employer_id instead of id
+    e.employer_id AS employer_id,
     e.employer_name,
-    f.job_ad_id AS job_ad_id,  -- Use job_ad_id instead of id
+    f.job_ad_id AS job_ad_id,
     f.vacancies,
-    f.deadline,  -- Use the casted deadline
+    f.deadline,
     f.relevance,
     f.published
 
