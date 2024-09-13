@@ -7,17 +7,34 @@ def layout():
     engineer_types = ["All"] + sorted(df["ENGINEER_TYPE"].unique().tolist())
     st.title("Job listing for Engineering")
     st.write("This dashboard shows the job listing for Engineering from arbetetsformedlingens API")
+    
 
-    st.markdown("## Type of Engineers")
-    cols = st.columns(1)
+    st.markdown("Filters")
+    cols = st.columns(4)
+
 
     with cols[0]:
         selected_engineer_type = st.selectbox("Filter by Engineer Type", engineer_types)
+    
+    with cols[1]:
+        min_date = df["PUBLISHED"].min().date()
+        max_date = df["PUBLISHED"].max().date()
+        start_date = st.date_input("Start Date", min_date)
 
+    with cols[2]:
+        end_date = st.date_input("End Date", max_date)
+    
+    with cols[3]:
+        st.write("")
+
+    where_clauses = []
     if selected_engineer_type != "All":
-        filtered_df = df[df["ENGINEER_TYPE"] == selected_engineer_type]
-    else:
-        filtered_df = df
+        where_clauses.append(f"ENGINEER_TYPE = '{selected_engineer_type}'")
+    where_clauses.append(f"PUBLISHED >= '{start_date}' AND PUBLISHED <= '{end_date}'")
+    where_clause = "WHERE " + " AND ".join(where_clauses) if where_clauses else ""
+
+    filtered_df = query_job_listing(f"SELECT * FROM mart_job_listings {where_clause}")
+
 
     # Update metrics
     st.markdown("## Filtered Vacancies")
