@@ -1,7 +1,6 @@
 agate==1.9.1
 altair==5.4.1
 annotated-types==0.7.0
-appnope==0.1.4
 asn1crypto==1.5.1
 asttokens==2.4.1
 astunparse==1.6.3
@@ -63,7 +62,7 @@ mdurl==0.1.2
 minimal-snowplow-tracker==0.0.2
 more-itertools==10.5.0
 msgpack==1.0.8
-narwhals==1.6.3
+narwhals==1.8.0
 nest-asyncio==1.6.0
 networkx==3.3
 numpy==2.1.1
@@ -76,14 +75,12 @@ parso==0.8.4
 pathspec==0.12.1
 pathvalidate==3.2.1
 pendulum==3.0.0
-pexpect==4.9.0
 pillow==10.4.0
 platformdirs==4.2.2
 ply==3.11
 prompt-toolkit==3.0.47
 protobuf==4.25.4
 psutil==6.0.0
-ptyprocess==0.7.0
 pure-eval==0.2.3
 pyarrow==17.0.0
 pycparser==2.22
@@ -94,7 +91,6 @@ pygments==2.18.0
 pyjwt==2.9.0
 pyopenssl==24.2.1
 python-dateutil==2.9.0.post0
-python-dotenv==1.0.1
 python-slugify==8.0.4
 pytimeparse==1.1.8
 pytz==2024.1
@@ -105,7 +101,7 @@ pyzmq==26.2.0
 referencing==0.35.1
 requests==2.32.3
 requirements-parser==0.11.0
-rich==13.8.0
+rich==13.8.1
 rpds-py==0.20.0
 semver==3.0.2
 setuptools==74.1.1
