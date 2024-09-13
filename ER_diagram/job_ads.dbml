@@ -1,5 +1,5 @@
 Table fct_job_ad {
-    job_id STRING [primary key]
+    job_ad_id STRING [primary key]
     number_of_vacancies INTEGER [NOT NULL]
     relevance INTEGER [NOT NULL]
     application_deadline DATETIME [NOT NULL]
