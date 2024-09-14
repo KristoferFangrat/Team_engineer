@@ -16,3 +16,78 @@ models:
               quantile: .90
               min_value: 1 
               max_value: 30
+
+      - name: headline
+        description: "Rubrik för jobbannonsen"
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_have_consistent_casing:
+              display_inconsistent_columns: true
+
+      - name: salary_type
+        description: "Lönetyp"
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['Fast månads- vecko- eller timlön', 'Fast och rörlig lön', 'Rörlig ackords- eller provisionslön']
+
+      - name: relevance
+        description: "Relevans för jobbannonsen"
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
+
+      - name: employer_name
+        description: "Arbetsgivarens namn"
+        data_tests:
+          - not_null
+
+      - name: workplace_city
+        description: "Arbetsplatsens stad"
+        data_tests:
+          - not_null
+
+      - name: "description"
+        description: "Beskrivning av jobbannonsen"
+        data_tests:
+          - not_null
+
+      - name: duration
+        description: "Längd på anställning"
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['3 månader – upp till 6 månader', '11 dagar - upp till 3 månader', 'Upp till 10 dagar', 'Tills vidare', '6 månader eller längre', 'Not Available']
+
+      - name: scope_of_work_min
+        description: "Minst antal timmar per vecka"
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['Not Available', '25', '100', '0']
+
+      - name: scope_of_work_max
+        description: "Max antal timmar per vecka"
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['Not Available', '100']
+
+      - name: deadline
+        description: "Sista ansökningsdag för jobbannonsen"
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp_ntz
+
+      - name: published
+        description: "Publiceringsdatum för jobbannonsen"
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp_ntz
+
+
