@@ -1,7 +1,7 @@
 
  USE ROLE useradmin;
 
-CREATE ROLE T_E_streamlit_role;
+CREATE ROLE IF NOT EXISTS T_E_streamlit_role;
 
 USE ROLE SECURITYADMIN;
 

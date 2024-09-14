@@ -1,70 +1,70 @@
 models: 
     - name: dim_job_detail
-      description: "Job detail information for job ads"
+      description: "Specifika detaljer för jobbannonser"
       table_tests:
        - dbt_expectations.expect_table_columns_to_match_set:
           column_list: ["job_detail_id", "headline", "description_text", "employment_type", "duration", "salary_type", "scope_of_work_min", "scope_of_work_max", "occupation_field", "engineer_type"]
 
       columns: 
         - name: job_detail_id
-          description: "Unique identifier for the job detail"
+          description: "Unik identifierare för jobbdetaljer"
           data_tests:
             - unique
             - not_null
 
         - name: headline
-          description: "Headline of the job ad"
+          description: "Rubrik för jobbannonsen"
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_have_consistent_casing:
                 display_inconsistent_columns: true
         
         - name: description_text
-          description: "Description of the job ad"
+          description: "Beskrivning av jobbannonsen"
           data_tests:
             - not_null
 
         - name: employment_type
-          description: "Type of employment"
+          description: "Typ av anställning"
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_be_in_set:
                 value_set: ['Arbete utomlands', 'Sommarjobb / feriejobb', 'Vanlig anställning', 'Behovsanställning']
 
         - name: duration
-          description: "Duration of the employment"
+          description: "Längd på anställning"
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_be_in_set:
                 value_set: ['3 månader – upp till 6 månader', '11 dagar - upp till 3 månader', 'Upp till 10 dagar', 'Tills vidare', '6 månader eller längre', 'Not Available']
         
         - name: salary_type
-          description: "Type of salary"
+          description: "Lönetyp"
           data_tests:
             - dbt_expectations.expect_column_values_to_be_in_set:
                 value_set: ['Fast månads- vecko- eller timlön', 'Fast och rörlig lön', 'Rörlig ackords- eller provisionslön']
 
         - name: scope_of_work_min
-          description: "Minimum scope of work"
+          description: "Minst antal timmar per vecka"
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_be_in_set:
                 value_set: [Not Available, 25, 100, 0]
         
         - name: scope_of_work_max
-          description: "Maximum scope of work"
+          description: "Max antal timmar per vecka"
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_be_in_set:
                 value_set: [Not Available, 100]
         
         - name: occupation_field
-          description: "Occupation field"
+          description: "Yrkesområde"
           data_test:
             - not_null
 
         - name: engineer_type
-          description: "Type of engineer"
+          description: "Ingenjörstyp"
           data_test:
             - not_null
             - dbt_expectations.expect_column_values_to_be_in_set:

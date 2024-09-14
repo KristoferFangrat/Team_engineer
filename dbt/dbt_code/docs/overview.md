@@ -1,45 +1,50 @@
 {% docs __overview__ %}
 
-# Team engineer project
+# Team Engineer Projekt
 
-Detta arbete är en del av kursen "Data warehouse lifecycle" på STI. 
-Vi skulle söka på jobbannsonser och sedan skapa en data warehouse för att analysera annsonser med ingenjörsrelaterade(t.ex. högskoleingenjör, civilingenjör) jobbannsoner.
+Detta arbete är en del av kursen "Data Warehouse Lifecycle" på STI. 
+Vi skulle söka på jobbannonser och sedan skapa ett data warehouse för att analysera annonser med ingenjörsrelaterade (t.ex. högskoleingenjör, civilingenjör) jobbannonser.
 
 ## Datakällor
-- Arbetsförmedlingen
+- [Arbetsförmedlingen](https://www.arbetsformedlingen.se): Den primära källan för jobbannonser.
 
-## Dimensions modellera
-![dimensional model](assets/team_engineer_job_ads_dimension_model.png)
+## Dimensions-modell
+Denna modell visar en överblick över vår dimensionsmodellering.
+
+![dimensional model](assets/team_engineer_job_ads.png)
 
 ## Data Warehouse
-- Data warehouse är skapat i Snowflake
-- Data modellering är gjord i dbt
-- Data pipeline är skapat i dlt
+- Data warehouse är skapat i Snowflake.
+- Data modellering är gjord i dbt.
+- Data pipeline är skapad i dlt.
 
 ## dbt
-- dbt är ett verktyg för att modellera data
-- dbt används för att modellera data i data warehouse
+- dbt (data build tool) är ett verktyg för att modellera data.
+- dbt används för att transformera data i data warehouse.
+- dbt möjliggör versionering och testning av datamodeller.
 
 ## dlt
-- dlt är ett verktyg för att skapa data pipeline
-- dlt används för att skapa data pipeline i data warehouse
+- dlt (data loading tool) är ett verktyg för att skapa data pipelines.
+- dlt används för att extrahera, transformera och ladda data till data warehouse.
+- dlt säkerställer att data pipelines är robusta och skalbara.
 
 ## Katalogstruktur
 
-- 'models/': Innehåller alla dbt-modeller.
-- 'macros/': Innehåller alla dbt-makron.
-- 'analyses/': Innehåller analysfiler.
-- 'logs/': Innehåller loggfiler.
+- `models/`: Innehåller alla dbt-modeller.
+- `macros/`: Innehåller alla dbt-makron.
+- `analyses/`: Innehåller analysfiler.
+- `logs/`: Innehåller loggfiler.
 
 ## Komma igång
 
 För att köra dbt-projektet, använd följande kommandon:
 
-``` sh
+```sh
+dbt deps
 dbt run
 dbt test
 dbt docs generate
 dbt docs serve
-``` 
+```
 
 {% enddocs %}

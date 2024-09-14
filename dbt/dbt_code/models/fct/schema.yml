@@ -1,16 +1,19 @@
 models: 
   - name: fct_job_ad
+    description: "Denna tabell innehåller information om jobbannonser"
     data_tests:
       - dbt_expectations.expect_table_columns_to_match_set:
           column_list: ["job_ad_id", "vacancies", "relevance", "deadline", "published", "job_detail_key", "employer_key", "auxillary_attribute_key"]
 
     columns: 
       - name: job_ad_id
+        description: "Unik identifierare för jobbannonsen"
         data_tests:
           - unique
           - not_null
 
       - name: vacancies
+        description: "Antal lediga platser på jobbannonsen"
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
@@ -21,6 +24,7 @@ models:
               max_value: 30
 
       - name: relevance
+        description: "Relevans för jobbannonsen"
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between:
@@ -30,18 +34,21 @@ models:
               column_type: float
 
       - name: deadline
+        description: "Sista ansökningsdag för jobbannonsen"
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: timestamp_ntz
 
       - name: published
+        description: "Publiceringsdatum för jobbannonsen"
         data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: timestamp_ntz
       
       - name: job_detail_key
+        description: "Foreign-key för jobbdetaljer"
         data_tests:
           - unique
           - not_null
@@ -50,6 +57,7 @@ models:
                 field: job_detail_id
    
       - name: employer_key
+        description: "Foreign-key för arbetsgivare"
         data_tests:
           - unique
           - not_null
@@ -58,6 +66,7 @@ models:
                 field: employer_id
 
       - name: auxillary_attribute_key
+        description: "Foreign-key för hjälpattribut"
         data_tests:
           - unique
           - not_null

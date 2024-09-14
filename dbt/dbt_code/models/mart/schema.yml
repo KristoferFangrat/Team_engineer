@@ -1,0 +1,18 @@
+models:
+  - name: mart_job_listings
+    description: "Den här tabellen innehåller information om jobbannonser."
+    data_tests:
+      - dbt_expectations.expect_table_columns_to_match_set:
+          column_list: ["headline", "vacancies", "salary_type", "relevance", "employer_name", "workplace_city", "description",
+           "duration", "scope_of_work_min", "scope_of_work_max", "deadline", "engineer_type", "published"]
+    columns:
+      - name: vacancies
+        description: "Antal lediga platser på jobbannonsen"
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: number
+          - dbt_expectations.expect_column_quantile_values_to_be_between:
+              quantile: .90
+              min_value: 1 
+              max_value: 30
