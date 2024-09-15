@@ -110,5 +110,16 @@ macros:
         description: "Kolumnen vars ord du vill göra versala."
     returns:
       type: string
-      description: "Den angivna kolumnen med versala första bokstäver i varje ord."
-
+      description: "Angiven kolumnen med versala första bokstaven i varje ord."
+  - name: generate_schema_name
+    description: "Detta makro genererar ett schema-namn baserat på antingen ett anpassat schema-namn eller det standard schema-namn som anges i dbt-projektets mål."
+    arguments:
+      - name: custom_schema_name
+        type: string
+        description: "Det valfria anpassade schema-namnet som ska användas. Om inget anges, används standardschemat."
+      - name: node
+        type: node
+        description: "Den aktuella noden som schemat ska genereras för."
+    returns:
+      type: string
+      description: "Det genererade schemat."
