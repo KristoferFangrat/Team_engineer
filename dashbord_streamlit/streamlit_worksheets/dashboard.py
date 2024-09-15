@@ -30,17 +30,12 @@ def layout():
 
     where_clauses = []
 
-    st.markdown("## Type of Engineers")
-    cols = st.columns(1)
-
-    with cols[0]:
-        selected_engineer_type = st.selectbox("Filter by Engineer Type", engineer_types)
-
-
     if selected_engineer_type != "All":
         where_clauses.append(f"ENGINEER_TYPE = '{selected_engineer_type}'")
     where_clauses.append(f"PUBLISHED >= '{start_date}' AND PUBLISHED <= '{end_date}'")
     where_clause = "WHERE " + " AND ".join(where_clauses) if where_clauses else ""
+
+
 
     filtered_df = query_job_listing(f"SELECT * FROM mart_job_listings {where_clause}")
 
@@ -48,18 +43,41 @@ def layout():
     st.markdown("## Filtered Vacancies")
     cols = st.columns(3)
     with cols[0]:
-        st.metric(label="Total (Filtered)", value=filtered_df["VACANCIES"].sum())
+        st.metric(label="Total", value=filtered_df["VACANCIES"].sum())
     with cols[1]:
-        st.metric(label="In Stockholm (Filtered)", value=filtered_df.query("WORKPLACE_CITY == 'Stockholm'")["VACANCIES"].sum())
+        st.metric(label="In Stockholm", value=filtered_df.query("WORKPLACE_CITY == 'Stockholm'")["VACANCIES"].sum())
     with cols[2]:
-        st.metric(label="In Göteborg (Filtered)", value=filtered_df.query("WORKPLACE_CITY == 'Göteborg'")["VACANCIES"].sum())
+        st.metric(label="In Göteborg", value=filtered_df.query("WORKPLACE_CITY == 'Göteborg'")["VACANCIES"].sum())
 
 
  
     where_clause = f"WHERE ENGINEER_TYPE = '{selected_engineer_type}'" if selected_engineer_type != "All" else ""
 
-    cols = st.columns(2)
+    cols = st.columns(1)
    
+    with cols[0]:
+        st.markdown("### Per employer")
+        st.bar_chart(
+            query_job_listing(
+                f"""
+                SELECT
+                    SUM(vacancies) as vacancies,
+                    employer_name
+                FROM
+                    mart_job_listings
+                {where_clause}
+                GROUP BY
+                    employer_name
+                ORDER BY vacancies DESC
+                LIMIT 10;
+                """
+            ),
+            x="EMPLOYER_NAME",
+            y="VACANCIES",
+        )
+
+    cols=st.columns(1)
+    
     with cols[0]:
         st.markdown("### Per city")
         st.dataframe(
@@ -77,27 +95,6 @@ def layout():
                 """
             )
         )
-    with cols[1]:
-        st.markdown("### Per company (top 5)")
-        st.bar_chart(
-            query_job_listing(
-                f"""
-                SELECT
-                    SUM(vacancies) as vacancies,
-                    employer_name
-                FROM
-                    mart_job_listings
-                {where_clause}
-                GROUP BY
-                    employer_name
-                ORDER BY vacancies DESC
-                LIMIT 5;
-                """
-            ),
-            x="EMPLOYER_NAME",
-            y="VACANCIES",
-        )
-
 
     st.markdown("## find advertisement")
 
@@ -116,7 +113,7 @@ def layout():
     st.markdown("### Job ad")
     st.markdown(
         df.query("HEADLINE == @selected_headline and EMPLOYER_NAME == @selected_company"
-        )["DESCRIPTION_TEXT"].values[0], 
+        )["description"].values[0], 
         unsafe_allow_html=True,
     )
 
