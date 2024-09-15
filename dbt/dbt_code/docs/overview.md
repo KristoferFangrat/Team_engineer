@@ -47,4 +47,21 @@ dbt docs generate
 dbt docs serve
 ```
 
+# Makro-dokumentation
+
+## `generate_schema_name`
+
+### Beskrivning
+
+Makrot `generate_schema_name` genererar ett schemanamn baserat på det angivna `custom_schema_name` och standardschemat från målkonfigurationen.
+
+### Parametrar
+
+- `custom_schema_name` (string): Det anpassade schemanamnet att använda. Om `None` används standardschemat från målkonfigurationen.
+- `node` (dict): Nodordboken som innehåller information om den aktuella modellen, fröet eller ögonblicksbilden. Denna parameter skickas vanligtvis automatiskt av dbt.
+
+### Användning
+
+Detta makro kan användas i dina dbt-modeller för att dynamiskt generera schemanamn. Här är ett exempel på hur man använder det:
+
 {% enddocs %}

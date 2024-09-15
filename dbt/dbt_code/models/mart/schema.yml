@@ -99,4 +99,16 @@ models:
             - dbt_expectations.expect_column_values_to_have_consistent_casing:
                 display_inconsistent_columns: true
 
+version: 2
+
+macros:
+  - name: capitalize_first_letter_each_word   
+    description: "Detta makro gör att den första bokstaven i varje ord i en angiven kolumn blir versal. Det hanterar null-värden genom att returnera null."
+    arguments:
+      - name: column
+        type: string
+        description: "Kolumnen vars ord du vill göra versala."
+    returns:
+      type: string
+      description: "Den angivna kolumnen med versala första bokstäver i varje ord."
 
