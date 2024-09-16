@@ -7,19 +7,22 @@ job_details AS (SELECT * FROM {{ ref('dim_job_detail') }}),
 employer AS (SELECT * FROM {{ ref('dim_employer') }})
 
 SELECT
-    jd.headline AS headline,
-    f.vacancies AS vacancies,
-    jd.salary_type AS salary_type,
-    f.relevance AS relevance,
-    e.employer_name AS employer_name,
-    e.workplace_city AS workplace_city,
-    jd.description_text AS description,
-    jd.duration AS duration,
-    jd.scope_of_work_min AS scope_of_work_min,
-    jd.scope_of_work_max AS scope_of_work_max,
-    CAST(f.deadline AS timestamp_ntz) AS deadline,
-    jd.engineer_type AS engineer_type,
-    CAST(f.published AS timestamp_ntz) AS published
+    jd.headline,
+    f.vacancies,
+    jd.salary_type,
+    f.relevance,
+    e.employer_name,
+    e.workplace_city,
+    e.workplace_municipality,
+    e.workplace_region,
+    jd.description_text,
+    jd.duration,
+    jd.scope_of_work_min,
+    jd.scope_of_work_max,
+    f.deadline,
+    f.published,
+    jd.engineer_type,
+    jd.occupation_field,
 
 FROM fct_job_ad AS f
 LEFT JOIN job_details AS jd
