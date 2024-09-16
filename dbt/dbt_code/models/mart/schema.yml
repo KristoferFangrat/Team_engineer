@@ -3,8 +3,7 @@ models:
     description: "Den här tabellen innehåller information om jobbannonser."
     data_tests:
       - dbt_expectations.expect_table_columns_to_match_set:
-          column_list: ["headline", "vacancies", "salary_type", "relevance", "employer_name", "workplace_city", "description",
-           "duration", "scope_of_work_min", "scope_of_work_max", "deadline", "engineer_type", "published"]
+          column_list: ["headline", "vacancies", "salary_type", "relevance", "employer_name", "workplace_city", "workplace_municipality", "workplace_region", "description_text", "duration", "scope_of_work_min", "scope_of_work_max", "deadline", "published", "engineer_type", "occupation_field"]
     columns:
       - name: vacancies
         description: "Antal lediga platser på jobbannonsen"
@@ -50,7 +49,17 @@ models:
         data_tests:
           - not_null
 
-      - name: description
+      - name: workplace_municipality
+        description: "Arbetsplatsens kommun"
+        data_tests:
+          - not_null
+
+      - name: workplace_region
+        description: "Arbetsplatsens region"
+        data_tests:
+          - not_null
+
+      - name: description_text
         description: "Beskrivning av jobbannonsen"
         data_tests:
           - not_null
@@ -98,6 +107,11 @@ models:
                 value_set: ["Rymdingenjör", "Driftingenjör", "Automationsingenjör", "Högskoleingenjör", "Civilingenjör", "Maskiningenjör", "Miljöingenjör"]
             - dbt_expectations.expect_column_values_to_have_consistent_casing:
                 display_inconsistent_columns: true
+
+      - name: occupation_field
+        description: "Yrkesområde"
+        data_test:
+            - not_null
 
 version: 2
 
