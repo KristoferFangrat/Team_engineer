@@ -113,7 +113,7 @@ def layout():
     st.markdown("### Job ad")
     st.markdown(
         df.query("HEADLINE == @selected_headline and EMPLOYER_NAME == @selected_company"
-        )["description"].values[0], 
+        )["DESCRIPTION_TEXT"].values[0], 
         unsafe_allow_html=True,
     )
 
