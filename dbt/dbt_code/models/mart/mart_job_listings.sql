@@ -19,8 +19,8 @@ SELECT
     jd.duration,
     jd.scope_of_work_min,
     jd.scope_of_work_max,
-    f.deadline,
-    f.published,
+    CAST(f.deadline AS TIMESTAMP_NTZ) AS deadline,
+    CAST(f.published AS TIMESTAMP_NTZ) AS published,
     jd.engineer_type,
     jd.occupation_field,
 
