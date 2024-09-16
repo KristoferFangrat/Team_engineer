@@ -49,6 +49,16 @@ models:
         data_tests:
           - not_null
 
+      - name: workplace_municipality
+        description: "Arbetsplatsens kommun"
+        data_tests:
+          - not_null
+
+      - name: workplace_region
+        description: "Arbetsplatsens region"
+        data_tests:
+          - not_null
+
       - name: description_text
         description: "Beskrivning av jobbannonsen"
         data_tests:
@@ -97,6 +107,11 @@ models:
                 value_set: ["Rymdingenjör", "Driftingenjör", "Automationsingenjör", "Högskoleingenjör", "Civilingenjör", "Maskiningenjör", "Miljöingenjör"]
             - dbt_expectations.expect_column_values_to_have_consistent_casing:
                 display_inconsistent_columns: true
+
+      - name: occupation_field
+        description: "Yrkesområde"
+        data_test:
+            - not_null
 
 version: 2
 
