@@ -1,6 +1,11 @@
 --- #### STREAMLIT ROLE
 USE ROLE USERADMIN;
 CREATE ROLE T_E_streamlit_role;
+
+USE ROLE useradmin;
+
+CREATE ROLE IF NOT EXISTS T_E_streamlit_role;
+
 USE ROLE SECURITYADMIN;
 
 --- #### MARTS LAYER GRANTS

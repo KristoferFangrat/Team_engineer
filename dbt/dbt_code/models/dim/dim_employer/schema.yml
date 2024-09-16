@@ -1,23 +1,27 @@
 models:
 
     - name: dim_employer
+      description: "Information om arbetgivare"
       table_tests:
         - dbt_expectations.expect_table_columns_to_match_set:
             column_list: ["employer_id", "employer_name", "employer_organization_number", "workplace_street_address", "workplace_region", "workplace_postcode", "workplace_city", "workplace_country", "workplace_municipality"]
 
       columns:
         - name: employer_id
+          description: "Unik identifierare för arbetsgivare"
           data_tests:
             - unique
             - not_null
 
         - name: employer_name
+          description: "Namn på arbetsgivaren"
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_have_consistent_casing:
                 display_inconsistent_columns: true
 
         - name: employer_organization_number
+          description: "Organisationsnummer för arbetsgivaren"
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_be_between:
@@ -26,18 +30,21 @@ models:
                 row_condition: employer_organization_number != 'Not Available'
 
         - name: workplace_street_address
+          description: "Gatuadress till arbetsplatsen"
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_have_consistent_casing:
                 display_inconsistent_columns: true
                 
         - name: workplace_region
+          description: "Region där arbetsplatsen tillhör."
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_have_consistent_casing:
                 display_inconsistent_columns: true
                 
         - name: workplace_postcode
+          description: "Postkod där arbetsplatsen befinner sig i."
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_be_between:
@@ -46,18 +53,21 @@ models:
                 row_condition: workplace_postcode != 'Not Available'
 
         - name: workplace_city
+          description: "Stad där arbetsplatsen befinner sig i."
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_have_consistent_casing:
                 display_inconsistent_columns: true
                 
         - name: workplace_country
+          description: "Land där arbetsplatsen befinner sig i."
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_have_consistent_casing:
                 display_inconsistent_columns: true
 
         - name: workplace_municipality
+          description: "Kommun där arbetsplatsen befinner sig i."
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_have_consistent_casing:
