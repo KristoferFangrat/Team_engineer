@@ -38,5 +38,5 @@ Table dim_auxillary_attribute {
     auxillary_id STRING [primary key]
     experience_required VARCHAR(30) [NOT NULL]
     driver_license VARCHAR(30) [NOT NULL]
-    access_to_own_car VARCHAR(30) [NOT NULL]
+    access_to_own_car BIT [NOT NULL]
 }
