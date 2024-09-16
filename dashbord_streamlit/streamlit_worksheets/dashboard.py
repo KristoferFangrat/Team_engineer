@@ -76,21 +76,40 @@ def layout():
             y="VACANCIES",
         )
 
-    cols=st.columns(1)
-    
+    cols=st.columns(2)
+
     with cols[0]:
-        st.markdown("### Per city")
+        st.markdown("### Per Municipality")
         st.dataframe(
             query_job_listing(
                 f"""
                 SELECT
                     SUM(vacancies) as vacancies,
-                    workplace_city
+                    workplace_municipality
                 FROM
                     mart_job_listings
                 {where_clause}
                 GROUP BY
-                    workplace_city
+                    workplace_municipality
+                ORDER BY vacancies DESC;
+                """
+            )
+        )
+
+
+    with cols[1]:
+        st.markdown("### Per Region")
+        st.dataframe(
+            query_job_listing(
+                f"""
+                SELECT
+                    SUM(vacancies) as vacancies,
+                    workplace_region
+                FROM
+                    mart_job_listings
+                {where_clause}
+                GROUP BY
+                    workplace_region
                 ORDER BY vacancies DESC;
                 """
             )
