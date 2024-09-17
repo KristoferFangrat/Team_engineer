@@ -1,25 +1,25 @@
 Table fct_job_ad {
     job_ad_id STRING [primary key]
-    number_of_vacancies INTEGER [NOT NULL]
+    vacancies INTEGER [NOT NULL]
     relevance INTEGER [NOT NULL]
-    application_deadline DATETIME [NOT NULL]
-    publication_date DATETIME [NOT NULL]
-    job_details_key STRING [ref: > dim_job_detail.job_detail_id]
+    deadline TIMESTAMP [NOT NULL]
+    published TIMESTAMP [NOT NULL]
+    job_detail_key STRING [ref: > dim_job_detail.job_detail_id]
     employer_key STRING [ref: > dim_employer.employer_id]
-    auxillary_key STRING [ref: > dim_auxillary_attribute.auxillary_id]
+    auxillary_attribute_key STRING [ref: > dim_auxillary_attribute.auxillary_id]
     }
 
 Table dim_job_detail {
     job_detail_id STRING [primary key]
     headline STRING [NOT NULL]
-    description STRING [NOT NULL]
+    description_text STRING [NOT NULL]
     employement_type STRING [NOT NULL]
     duration STRING [NOT NULL]
     salary_type STRING [NOT NULL]
-    scope_of_work_min NUMBER(3,0) [NOT NULL]
-    scope_of_work_max NUMBER(3,0) [NOT NULL]
+    scope_of_work_min STRING [NOT NULL]
+    scope_of_work_max STRING [NOT NULL]
     engineer_type STRING [NOT NULL]
-    occupation_label STRING [NOT NULL]
+    occupation_field STRING [NOT NULL]
 }
 
 Table dim_employer {
@@ -36,7 +36,7 @@ Table dim_employer {
 
 Table dim_auxillary_attribute {
     auxillary_id STRING [primary key]
-    experience_required VARCHAR(30) [NOT NULL]
-    driver_license VARCHAR(30) [NOT NULL]
-    access_to_own_car VARCHAR(30) [NOT NULL]
+    experience_required BOOLEAN [NOT NULL]
+    required_driving_license BOOLEAN [NOT NULL]
+    access_to_own_car BOOLEAN [NOT NULL]
 }
