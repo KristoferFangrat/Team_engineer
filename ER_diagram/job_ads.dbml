@@ -1,5 +1,4 @@
 Table fct_job_ad {
-<<<<<<< HEAD
 job_ad_id STRING [primary key]
 vacancies INTEGER [NOT NULL]
 relevance INTEGER [NOT NULL]
@@ -21,29 +20,19 @@ scope_of_work_min STRING [NOT NULL]
 scope_of_work_max STRING [NOT NULL]
 engineer_type STRING [NOT NULL]
 occupation_field STRING [NOT NULL]
-=======
-    job_ad_id STRING [primary key]
-    vacancies INTEGER [NOT NULL]
-    relevance INTEGER [NOT NULL]
-    deadline TIMESTAMP [NOT NULL]
-    published TIMESTAMP [NOT NULL]
-    job_detail_key STRING [ref: > dim_job_detail.job_detail_id]
-    employer_key STRING [ref: > dim_employer.employer_id]
-    auxillary_attribute_key STRING [ref: > dim_auxillary_attribute.auxillary_id]
-    }
+}
 
 Table dim_job_detail {
-    job_detail_id STRING [primary key]
-    headline STRING [NOT NULL]
-    description_text STRING [NOT NULL]
-    employement_type STRING [NOT NULL]
-    duration STRING [NOT NULL]
-    salary_type STRING [NOT NULL]
-    scope_of_work_min STRING [NOT NULL]
-    scope_of_work_max STRING [NOT NULL]
-    engineer_type STRING [NOT NULL]
-    occupation_field STRING [NOT NULL]
->>>>>>> 0df05ac77f5e29a947b6bebf8890f7c612e39584
+job_detail_id STRING [primary key]
+headline STRING [NOT NULL]
+description_text STRING [NOT NULL]
+employement_type STRING [NOT NULL]
+duration STRING [NOT NULL]
+salary_type STRING [NOT NULL]
+scope_of_work_min STRING [NOT NULL]
+scope_of_work_max STRING [NOT NULL]
+engineer_type STRING [NOT NULL]
+occupation_field STRING [NOT NULL]
 }
 
 Table dim_employer {
@@ -59,16 +48,9 @@ workplace_municipality STRING [NOT NULL]
 }
 
 Table dim_auxillary_attribute {
-<<<<<<< HEAD
 auxillary_id STRING [primary key]
 experience_required BOOLEAN [NOT NULL]
 required_driving_license BOOLEAN [NOT NULL]
 access_to_own_car BOOLEAN [NOT NULL]
 }
-=======
-    auxillary_id STRING [primary key]
-    experience_required BOOLEAN [NOT NULL]
-    required_driving_license BOOLEAN [NOT NULL]
-    access_to_own_car BOOLEAN [NOT NULL]
-}
->>>>>>> 0df05ac77f5e29a947b6bebf8890f7c612e39584
+
