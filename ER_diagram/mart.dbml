@@ -1,0 +1,18 @@
+Table mart_job_listings {
+    headline VARCHAR(255) [NOT NULL]
+    vacancies NUMBER(19,0) [NOT NULL]
+    salary_type VARCHAR(255) [NOT NULL]
+    relevance FLOAT [NOT NULL]
+    employer_name VARCHAR(255) [NOT NULL]
+    workplace_city VARCHAR(255) [NOT NULL]
+    workplace_municipality VARCHAR(255) [NOT NULL]
+    workplace_region VARCHAR(255) [NOT NULL]
+    description_text VARHCAR(255) [NOT NULL]
+    duration VARCHAR(30) [NOT NULL]
+    scope_of_work_min VARCHAR(10) [NOT NULL]
+    scope_of_work_max VARCHAR(10) [NOT NULL]
+    deadline DATETIME [NOT NULL]
+    published DATETIME [NOT NULL]
+    engineer_type VARCHAR(255) [NOT NULL]
+    occupation_field VARCHAR(255) [NOT NULL]
+}
